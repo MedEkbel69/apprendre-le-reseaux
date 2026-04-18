@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matériel Réseau - Centre Hay El Khadhra</title>
+    <link rel="stylesheet" href="pro-style.css">
+</head>
+<body>
+    <header>
+        <nav class="container nav-container">
+            <a href="index.html" class="logo">CSFT</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="fondamentaux.html">Fondamentaux</a></li>
+                <li><a href="adressage.html">Adressage IP</a></li>
+                <li><a href="commandes.html">Commandes</a></li>
+                <li><a href="materiel.html" class="active">Matériel</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h1>Équipements Réseau</h1>
+            <p>Présentation des principaux composants matériels des réseaux informatiques</p>
+        </section>
+
+        <div class="section-grid">
+            <div class="card">
+                <h2>Câble Ethernet RJ45</h2>
+                <p>Support physique pour la transmission des données en réseau local</p>
+                
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Caractéristique</th>
+                                <th>Détail</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Connecteur</td>
+                                <td>RJ45 (8 broches)</td>
+                            </tr>
+                            <tr>
+                                <td>Catégorie</td>
+                                <td>Cat5e / Cat6</td>
+                            </tr>
+                            <tr>
+                                <td>Longueur max</td>
+                                <td>100 mètres</td>
+                            </tr>
+                            <tr>
+                                <td>Vitesse</td>
+                                <td>1 Gbps (Cat5e), 10 Gbps (Cat6)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Commutateur (Switch)</h2>
+                <p>Équipement de couche 2 qui connecte plusieurs appareils dans un LAN</p>
+                
+                <ul>
+                    <li>Ports Ethernet 10/100/1000 Mbps</li>
+                    <li>Modèles non-gérés pour usage domestique</li>
+                    <li>Exemple : TP-Link TL-SG105 (5 ports Gigabit)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section-grid">
+            <div class="card">
+                <h2>Routeur</h2>
+                <p>Équipement de couche 3 assurant le routage entre réseaux</p>
+                
+                <ul>
+                    <li>Connexion Internet (ADSL/Fibre)</li>
+                    <li>NAT (Translation d'adresses)</li>
+                    <li>DHCP (Attribution automatique IP)</li>
+                    <li>WiFi intégré (802.11n/ac/ax)</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>Box Internet (Tunisie)</h2>
+                <p>Routeurs fournis par les opérateurs tunisiens</p>
+                
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Opérateur</th>
+                                <th>Modèle courant</th>
+                                <th>IP par défaut</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Tunisie Telecom</td>
+                                <td>ZTE F660</td>
+                                <td>192.168.1.1</td>
+                            </tr>
+                            <tr>
+                                <td>Ooredoo</td>
+                                <td>Huawei HG8245H</td>
+                                <td>192.168.1.1</td>
+                            </tr>
+                            <tr>
+                                <td>Orange Tunisie</td>
+                                <td>ZTE ZXHN H168N</td>
+                                <td>192.168.1.254</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Connexion typique en Tunisie</h2>
+            <div class="diagram">
+                <div class="device">Box Internet<br><small>192.168.1.1</small></div>
+                <div class="connection"></div>
+                <div class="device">Switch<br><small>5 ports</small></div>
+                <div class="connection"></div>
+                <div class="device">Ordinateur<br><small>192.168.1.100</small></div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="container">
+        <p>Centre Sectoriel Hay El Khadhra - Formation Réseaux</p>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                document.querySelector('.nav-links a.active')?.classList.remove('active');
+                link.classList.add('active');
+            });
+        });

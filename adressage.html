@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adressage IP - Centre Hay El Khadhra</title>
+    <link rel="stylesheet" href="pro-style.css">
+</head>
+<body>
+    <header>
+        <nav class="container nav-container">
+            <a href="index.html" class="logo">CSFT</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="fondamentaux.html">Fondamentaux</a></li>
+                <li><a href="adressage.html" class="active">Adressage IP</a></li>
+                <li><a href="commandes.html">Commandes</a></li>
+                <li><a href="materiel.html">Matériel</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h1>Adressage IP</h1>
+            <p>Principes de l'adressage IPv4 dans les réseaux locaux</p>
+        </section>
+
+        <div class="section-grid">
+            <div class="card">
+                <h2>Structure d'une adresse IPv4</h2>
+                <p>Une adresse IPv4 est composée de 4 nombres séparés par des points (notation décimale). Chaque nombre représente 8 bits (octet).</p>
+                
+                <pre class="code-block">192.168.1.100
+ ↑    ↑    ↑   ↑
+Octet Octet Octet Octet</pre>
+
+                <p><strong>Exemple concret :</strong></p>
+                <ul>
+                    <li><code>192.168.1.1</code> : Adresse de la passerelle (box Internet)</li>
+                    <li><code>192.168.1.100</code> : Adresse d'un ordinateur du réseau</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>Masque de sous-réseau</h2>
+                <p>Le masque de sous-réseau détermine quelle partie de l'adresse IP identifie le réseau et quelle partie identifie l'hôte.</p>
+                
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Élément</th>
+                                <th>Exemple</th>
+                                <th>Fonction</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Adresse IP</td>
+                                <td>192.168.1.100</td>
+                                <td>Identifie l'hôte dans le réseau</td>
+                            </tr>
+                            <tr>
+                                <td>Masque</td>
+                                <td>255.255.255.0</td>
+                                <td>Définit la taille du réseau</td>
+                            </tr>
+                            <tr>
+                                <td>Passerelle</td>
+                                <td>192.168.1.1</td>
+                                <td>Routeur vers l'extérieur</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Diagramme réseau domestique</h2>
+            <div class="diagram">
+                <div class="device">Box Internet<br><code>192.168.1.1</code></div>
+                <div class="connection"></div>
+                <div class="device">PC1<br><code>192.168.1.100</code></div>
+                <div class="connection"></div>
+                <div class="device">PC2<br><code>192.168.1.101</code></div>
+            </div>
+            <p>Tous les appareils partagent les 3 premiers octets (192.168.1.x) grâce au masque 255.255.255.0</p>
+        </div>
+
+        <div class="section-grid">
+            <div class="card">
+                <h2>Adresses spéciales</h2>
+                <ul>
+                    <li><strong>127.0.0.1</strong> : Adresse loopback (votre propre machine)</li>
+                    <li><strong>192.168.x.1</strong> : Adresse par défaut des routeurs domestiques</li>
+                    <li><strong>255.255.255.255</strong> : Adresse de diffusion (broadcast)</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer class="container">
+        <p>Centre Sectoriel Hay El Khadhra - Formation Réseaux</p>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                document.querySelector('.nav-links a.active')?.classList.remove('active');
+                link.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

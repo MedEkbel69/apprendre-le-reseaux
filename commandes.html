@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commandes Réseau - Centre Hay El Khadhra</title>
+    <link rel="stylesheet" href="pro-style.css">
+</head>
+<body>
+    <header>
+        <nav class="container nav-container">
+            <a href="index.html" class="logo">CSFT</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="fondamentaux.html">Fondamentaux</a></li>
+                <li><a href="adressage.html">Adressage IP</a></li>
+                <li><a href="commandes.html" class="active">Commandes</a></li>
+                <li><a href="materiel.html">Matériel</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h1>Commandes de diagnostic réseau</h1>
+            <p>Outils en ligne de commande essentiels pour l'analyse et le dépannage</p>
+        </section>
+
+        <div class="section-grid">
+            <div class="card">
+                <h2>ipconfig</h2>
+                <p>Affiche la configuration réseau de l'ordinateur</p>
+                
+                <pre class="code-block"><span class="prompt">C:\>ipconfig</span>
+
+Carte Ethernet Ethernet 2 :
+   Adresse IPv4. . . . . . . . . : 192.168.1.100
+   Masque de sous-réseau. . . . . : 255.255.255.0
+   Passerelle par défaut. . . . . : 192.168.1.1
+
+Adaptateur Loopback :
+   Adresse IPv4. . . . . . . . . : 127.0.0.1</pre>
+            </div>
+
+            <div class="card">
+                <h2>ping</h2>
+                <p>Vérifie la connectivité avec un hôte distant</p>
+                
+                <pre class="code-block"><span class="prompt">C:\>ping 192.168.1.1</span>
+
+Réponse de 192.168.1.1: octets=32 temps=1ms TTL=64
+Réponse de 192.168.1.1: octets=32 temps=2ms TTL=64
+
+Statistiques Ping : 4 paquets envoyés, 4 reçus, 0% de perte.</pre>
+
+                <pre class="code-block"><span class="prompt">C:\>ping google.com</span>
+
+Réponse de 142.250.190.78: octets=32 temps=28ms TTL=117</pre>
+            </div>
+        </div>
+
+        <div class="section-grid">
+            <div class="card">
+                <h2>tracert (traceroute)</h2>
+                <p>Affiche le chemin emprunté par les paquets jusqu'à la destination</p>
+                
+                <pre class="code-block"><span class="prompt">C:\>tracert google.com</span>
+
+1  1 ms  <1 ms  1 ms  192.168.1.1  [Passerelle locale]
+2  15 ms  12 ms  14 ms  197.12.45.1  [FAI Tunisie]
+3  85 ms  82 ms  84 ms  142.250.190.78  [google.com]</pre>
+            </div>
+
+            <div class="card">
+                <h2>Utilisation pratique</h2>
+                <ul>
+                    <li><code>ipconfig</code> : Vérifier votre adresse IP et passerelle</li>
+                    <li><code>ping 192.168.1.1</code> : Tester la connexion à votre box</li>
+                    <li><code>ping google.com</code> : Vérifier l'accès Internet</li>
+                    <li><code>tracert google.com</code> : Identifier les points de défaillance</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer class="container">
+        <p>Centre Sectoriel Hay El Khadhra - Formation Réseaux</p>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                document.querySelector('.nav-links a.active')?.classList.remove('active');
+                link.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

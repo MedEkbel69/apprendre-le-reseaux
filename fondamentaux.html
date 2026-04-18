@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fondamentaux des Réseaux - Centre Hay El Khadhra</title>
+    <link rel="stylesheet" href="pro-style.css">
+</head>
+<body>
+    <header>
+        <nav class="container nav-container">
+            <a href="index.html" class="logo">CSFT</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="fondamentaux.html" class="active">Fondamentaux</a></li>
+                <li><a href="adressage.html">Adressage IP</a></li>
+                <li><a href="commandes.html">Commandes</a></li>
+                <li><a href="materiel.html">Matériel</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h1>Fondamentaux des Réseaux</h1>
+            <p>Concepts de base nécessaires à la compréhension des réseaux informatiques</p>
+        </section>
+
+        <div class="section-grid">
+            <div class="card">
+                <h2>Réseau Local (LAN) vs Réseau Étendu (WAN)</h2>
+                
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Réseau Local (LAN)</th>
+                                <th>Réseau Étendu (WAN)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Portée limitée (bâtiment, étage)</td>
+                                <td>Portée étendue (villes, pays)</td>
+                            </tr>
+                            <tr>
+                                <td>Vitesse élevée</td>
+                                <td>Vitesse variable</td>
+                            </tr>
+                            <tr>
+                                <td>Technologies : Ethernet, WiFi</td>
+                                <td>Technologies : Fibre optique, ADSL</td>
+                            </tr>
+                            <tr>
+                                <td>Exemple : réseau domestique</td>
+                                <td>Exemple : Internet</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Client vs Serveur</h2>
+                
+                <div class="definition-card">
+                    <div>
+                        <h3>Client</h3>
+                        <p>Équipement qui demande des services ou des ressources</p>
+                        <ul>
+                            <li>Ordinateur personnel</li>
+                            <li>Smartphone</li>
+                            <li>Tablette</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Serveur</h3>
+                        <p>Équipement qui fournit des services ou des ressources</p>
+                        <ul>
+                            <li>Serveur web</li>
+                            <li>Serveur de fichiers</li>
+                            <li>Serveur d'impression</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-grid">
+            <div class="card">
+                <h2>Switch vs Routeur</h2>
+                
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Switch</th>
+                                <th>Routeur</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Couche 2 (liaison de données)</td>
+                                <td>Couche 3 (réseau)</td>
+                            </tr>
+                            <tr>
+                                <td>Connecte appareils dans un LAN</td>
+                                <td>Connecte différents réseaux</td>
+                            </tr>
+                            <tr>
+                                <td>Utilise adresses MAC</td>
+                                <td>Utilise adresses IP</td>
+                            </tr>
+                            <tr>
+                                <td>Exemple : TP-Link 5 ports</td>
+                                <td>Exemple : Box Internet</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="container">
+        <p>Centre Sectoriel Hay El Khadhra - Formation Réseaux</p>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                document.querySelector('.nav-links a.active')?.classList.remove('active');
+                link.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
