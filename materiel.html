@@ -136,6 +136,47 @@
                 <div class="device">Ordinateur<br><small>192.168.1.100</small></div>
             </div>
         </div>
+
+        <div class="quiz-section">
+            <h2>Quiz – Testez vos connaissances</h2>
+            <form id="quizForm">
+                <div class="quiz-question">
+                    <p>1. Quel type de câble est le plus utilisé pour connecter un ordinateur à un switch ?</p>
+                    <label><input type="radio" name="q1" value="a"> Câble coaxial</label>
+                    <label><input type="radio" name="q1" value="b"> Câble RJ45 (Ethernet)</label>
+                    <label><input type="radio" name="q1" value="c"> Câble HDMI</label>
+                </div>
+                <div class="quiz-question">
+                    <p>2. Quelle est la fonction principale d'un switch ?</p>
+                    <label><input type="radio" name="q2" value="a"> Connecter plusieurs appareils au sein d'un même réseau local</label>
+                    <label><input type="radio" name="q2" value="b"> Fournir une connexion Internet</label>
+                    <label><input type="radio" name="q2" value="c"> Émettre un signal Wi-Fi</label>
+                </div>
+                <div class="quiz-question">
+                    <p>3. Une box Internet (comme TT ou Orange) combine généralement :</p>
+                    <label><input type="radio" name="q3" value="a"> Un modem, un routeur et un point d'accès Wi-Fi</label>
+                    <label><input type="radio" name="q3" value="b"> Uniquement un modem</label>
+                    <label><input type="radio" name="q3" value="c"> Uniquement un switch</label>
+                </div>
+                <div class="quiz-question">
+                    <p>4. Que signifie le sigle RJ45 ?</p>
+                    <label><input type="radio" name="q4" value="a"> Registered Jack 45</label>
+                    <label><input type="radio" name="q4" value="b"> Rapid Jack 45</label>
+                    <label><input type="radio" name="q4" value="c"> Réseau Jack 45</label>
+                </div>
+                <div class="quiz-question">
+                    <p>5. Quel appareil est indispensable pour transformer le signal ADSL/fibre en signal Ethernet utilisable par un PC ?</p>
+                    <label><input type="radio" name="q5" value="a"> Un switch</label>
+                    <input type="radio" name="q5" value="b"> Un modem</label>
+                    <label><input type="radio" name="q5" value="c"> Un répéteur Wi-Fi</label>
+                </div>
+            </form>
+            <div class="quiz-actions">
+                <button type="button" id="submitQuiz" class="btn">Valider mes réponses</button>
+                <button type="button" id="resetQuiz" class="btn btn-secondary">Réinitialiser</button>
+            </div>
+            <div id="quizResult" class="quiz-result" style="display: none;"></div>
+        </div>
     </main>
 
     <footer class="container">
@@ -157,3 +198,40 @@
                 link.classList.add('active');
             });
         });
+    </script>
+
+    <script>
+        // Quiz functionality - Matériel
+        document.addEventListener('DOMContentLoaded', function() {
+            const correctAnswers = ['b', 'a', 'a', 'a', 'b'];
+            const submitBtn = document.getElementById('submitQuiz');
+            const resetBtn = document.getElementById('resetQuiz');
+            const resultDiv = document.getElementById('quizResult');
+            const form = document.getElementById('quizForm');
+
+            if (submitBtn) {
+                submitBtn.addEventListener('click', function() {
+                    let score = 0;
+                    const formData = new FormData(form);
+                    for (let i = 1; i <= 5; i++) {
+                        if (formData.get(`q${i}`) === correctAnswers[i-1]) score++;
+                    }
+                    const feedback = score === 5 ? 'Parfait ! 🎉' : 
+                                   score >= 4 ? 'Excellent ! 👍' : 
+                                   score >= 3 ? 'Bien joué ! 👏' : 'Continuez vos révisions 📚';
+                    resultDiv.innerHTML = `<h3>Vous avez obtenu ${score}/5</h3><p>${feedback}</p>`;
+                    resultDiv.style.display = 'block';
+                    resultDiv.scrollIntoView({ behavior: 'smooth' });
+                });
+            }
+
+            if (resetBtn) {
+                resetBtn.addEventListener('click', function() {
+                    form.reset();
+                    resultDiv.style.display = 'none';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

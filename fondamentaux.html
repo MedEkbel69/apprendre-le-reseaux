@@ -125,6 +125,47 @@
                 </div>
             </div>
         </div>
+
+        <div class="quiz-section">
+            <h2>Quiz – Testez vos connaissances</h2>
+            <form id="quizForm">
+                <div class="quiz-question">
+                    <p>1. Que signifie LAN ?</p>
+                    <label><input type="radio" name="q1" value="a"> Local Area Network</label>
+                    <label><input type="radio" name="q1" value="b"> Large Access Network</label>
+                    <label><input type="radio" name="q1" value="c"> Long Area Node</label>
+                </div>
+                <div class="quiz-question">
+                    <p>2. Quel équipement connecte plusieurs ordinateurs au sein d'un même réseau local ?</p>
+                    <label><input type="radio" name="q2" value="a"> Routeur</label>
+                    <label><input type="radio" name="q2" value="b"> Switch</label>
+                    <label><input type="radio" name="q2" value="c"> Modem</label>
+                </div>
+                <div class="quiz-question">
+                    <p>3. Quel est le rôle principal d'un routeur ?</p>
+                    <label><input type="radio" name="q3" value="a"> Amplifier le signal Wi-Fi</label>
+                    <label><input type="radio" name="q3" value="b"> Connecter différents réseaux entre eux</label>
+                    <label><input type="radio" name="q3" value="c"> Protéger contre les virus</label>
+                </div>
+                <div class="quiz-question">
+                    <p>4. Dans une architecture Client/Serveur, qui demande un service ?</p>
+                    <label><input type="radio" name="q4" value="a"> Le serveur</label>
+                    <label><input type="radio" name="q4" value="b"> Le client</label>
+                    <label><input type="radio" name="q4" value="c"> Le switch</label>
+                </div>
+                <div class="quiz-question">
+                    <p>5. Que signifie WAN ?</p>
+                    <label><input type="radio" name="q5" value="a"> Wireless Area Network</label>
+                    <label><input type="radio" name="q5" value="b"> Wide Area Network</label>
+                    <label><input type="radio" name="q5" value="c"> World Area Network</label>
+                </div>
+            </form>
+            <div class="quiz-actions">
+                <button type="button" id="submitQuiz" class="btn">Valider mes réponses</button>
+                <button type="button" id="resetQuiz" class="btn btn-secondary">Réinitialiser</button>
+            </div>
+            <div id="quizResult" class="quiz-result" style="display: none;"></div>
+        </div>
     </main>
 
     <footer class="container">
@@ -145,6 +186,40 @@
                 document.querySelector('.nav-links a.active')?.classList.remove('active');
                 link.classList.add('active');
             });
+        });
+    </script>
+
+    <script>
+        // Quiz functionality - Fondamentaux
+        document.addEventListener('DOMContentLoaded', function() {
+            const correctAnswers = ['a', 'b', 'b', 'b', 'b'];
+            const submitBtn = document.getElementById('submitQuiz');
+            const resetBtn = document.getElementById('resetQuiz');
+            const resultDiv = document.getElementById('quizResult');
+            const form = document.getElementById('quizForm');
+
+            if (submitBtn) {
+                submitBtn.addEventListener('click', function() {
+                    let score = 0;
+                    const formData = new FormData(form);
+                    for (let i = 1; i <= 5; i++) {
+                        if (formData.get(`q${i}`) === correctAnswers[i-1]) score++;
+                    }
+                    const feedback = score === 5 ? 'Parfait ! 🎉' : 
+                                   score >= 4 ? 'Excellent ! 👍' : 
+                                   score >= 3 ? 'Bien joué ! 👏' : 'Continuez vos révisions 📚';
+                    resultDiv.innerHTML = `<h3>Vous avez obtenu ${score}/5</h3><p>${feedback}</p>`;
+                    resultDiv.style.display = 'block';
+                    resultDiv.scrollIntoView({ behavior: 'smooth' });
+                });
+            }
+
+            if (resetBtn) {
+                resetBtn.addEventListener('click', function() {
+                    form.reset();
+                    resultDiv.style.display = 'none';
+                });
+            }
         });
     </script>
 </body>
